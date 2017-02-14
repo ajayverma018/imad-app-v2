@@ -6,24 +6,32 @@ var app = express();
 app.use(morgan('combined'));
 
 var artical= {
-    title: "artical one",
+    tit: "artical one",
     heading: "hi frns",
     date: "14 feb",
-    data:"this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text ."
+    ct:"<p>this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text this is text .</p>"
 };
 
-var htmlTemplate = '
-<html>
-<title>${title}</title>
-<body>
-<a href="/">Home</a>
-<hr>
-<h1>${heading}</h1>
-<h6>${date}</h6>
-${data}
-</body>
-</html>
-';
+function create (data){
+tit= data.tit;
+heading= data.heading;
+date= data.date;
+ct= data.ct;
+
+var Temp=` <html>
+            <head>
+            <title>${tit}</title>
+            </head>
+            <body>
+            <a href="/">Home</a>
+            <hr>
+            <h1>${heading}</h1>
+            <h6>${date}</h6>
+            ${ct}
+            </body>
+            </html>`;
+            return Temp;
+}
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -31,6 +39,10 @@ app.get('/', function (req, res) {
 
 app.get('/test', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'test.html'));
+});
+
+app.get('/artical', function (req, res) {
+  res.send(create(artical));
 });
 
 app.get('/ui/style.css', function (req, res) {
