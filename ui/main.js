@@ -1,9 +1,9 @@
 console.log('Loaded! yupeeeee');
-var element= get.elementById("txt");
+var element= document.getElementById("txt");
 element.innerHTML="hi this is ajay ";
 
 //move image
-var img= get.elementById("madi");
+var img= document.getElementById("madi");
 var marginLeft=0;
 function moveRight(){
     marginLeft= marginLeft + 10;
