@@ -6,7 +6,7 @@ element.innerHTML="hi this is ajay ";
 var img= document.getElementById("madi");
 var marginLeft=0;
 function moveRight(){
-    while(marginLeft<9000){
+    if(marginLeft<9000){
     marginLeft= marginLeft + 10;
     img.style.marginLeft= marginLeft + "px";
 
